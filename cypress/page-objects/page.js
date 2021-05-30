@@ -1,15 +1,15 @@
-// import {} from '@wdio/sync';
+
+
+const SELECTORS = {
+    CART_BUTTON: 'Cart'
+};
 
 export default class Page {
     constructor(selector) {
-        this.selector = selector;
+        this.SELECTORS = {...this.SELECTORS, ...selector};
     }
 
-    sleep(milliseconds) {
-        const date = Date.now();
-        let currentDate = null;
-        do {
-            currentDate = Date.now();
-        } while (currentDate - date < milliseconds);
+    clickCartButton() {
+        cy.get(`a:contains("${SELECTORS.CART_BUTTON}")`, { timeout: 10000 }).click({force: true});
     }
 }

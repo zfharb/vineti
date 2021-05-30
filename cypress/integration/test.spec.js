@@ -1,28 +1,27 @@
-// require('cypress-xpath')
 import { visitBaseURL } from '../fixtures/test-base';
 import LandingPage  from '../page-objects/landingPage';
-import Header  from '../page-objects/header';
+import CartPage  from '../page-objects/cartPage';
+import SignupPopup  from '../page-objects/signupPopup';
+import LoginPopup  from '../page-objects/loginPopup';
+import ItemPage  from '../page-objects/itemPage';
 
 
 describe('test suite for demoblaze site', () => {
-    context('', () => {
-      it('it should visit hobsons home page', () => {
+      it('it should add samsung galaxy s6 to cart', () => {
         visitBaseURL();
-        const signupPopup = LandingPage.clickSignUpButton();
+        LandingPage.clickSignUpButton();
         let username  = 'vineti' + Date.now();
-        signupPopup.fillUsernameBox(username)
-        signupPopup.fillPasswordBox('123')
-        signupPopup.clickSignupButton()
-        const loginPopup = LandingPage.clickLoginButton();
-        loginPopup.fillUsernameBox(username);
-        loginPopup.fillPasswordBox('123');
-        loginPopup.clickLoginButton();
-        const itemPage = LandingPage.clickItemByName('Samsung galaxy s6')
-        itemPage.clickAddToCartButton();
-        const cartPage = Header.clickCartButton();
-        cartPage.verifyItemTitle('Samsung galaxy s6');
-        // cy.get('title').should('have.text', 'Education Advances | Hobsons');
+        SignupPopup.fillUsernameBox(username)
+        SignupPopup.fillPasswordBox('123')
+        SignupPopup.clickSignupButton()
+        LandingPage.clickLoginButton();
+        LoginPopup.fillUsernameBox(username);
+        LoginPopup.fillPasswordBox('123');
+        LoginPopup.clickLoginButton();
+        LandingPage.clickItemByName('Samsung galaxy s6')
+        ItemPage.clickAddToCartButton();
+        ItemPage.clickCartButton();
+        CartPage.verifyItemTitle('Samsung galaxy s6');
       })
      
-    })
-  })
+})
