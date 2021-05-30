@@ -6,9 +6,13 @@
   "dependencies": {
     "cypress": "^7.4.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "mocha": "^8.0.1"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "open:cypress": "./node_modules/.bin/cypress open",
+    "run:cypress": "node_modules\\.bin\\cypress run --headed --spec cypress/integration/*.js"
   },
   "repository": {
     "type": "git",
